@@ -98,18 +98,15 @@ app.post("/delete", function(req, res, next) {
 })
 
 function deletePost(postIndex) {
-    // console.log('delete post');
     posts = [
         ...posts.slice(0, postIndex),
         ...posts.slice(postIndex + 1)
     ];
 
     // decrease the post id for the posts that come after the deleted post
-    // console.log(posts)
     for (let i = postIndex; i < posts.length; i++) {
         posts[i].id -= 1;
     }
-    // console.log(posts)
 }
 
 
