@@ -1,0 +1,78 @@
+
+    <div class="container my-2">
+        <div class="p-5 bg-body-tertiary rounded-3">
+            <!-- title of post -->
+            <h1 class="text-body-emphasis post-title fst-italic" style="font-family: 'Playfair Display', serif;">Title of a longer featured blog post</h1>
+            <!-- cut off main part of post -->
+            <p class="col-lg-8 fs-5 text-muted lead">
+                <!-- This is a custom jumbotron featuring an SVG image at the top, some longer text that wraps early thanks to a responsive <code>.col-*</code> class, and a customized call to action. -->
+                Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.
+            </p>
+
+            <!-- Continue reading text -->
+            <p class="lead mb-0">
+                <a href="#" class="text-body-emphasis fw-bold">Continue reading...</a>
+            </p>
+
+        </div>
+    </div>
+
+    <div class="container my-3">
+        <div class="row mb-2">
+            <div class="col-md-6 mb-3 mb-sm-0">
+              <div class="card mb-4">
+                <div class="card-body">
+                    <strong class="d-inline-block text-primary-emphasis mb-2">Category 1</strong>
+                    <h5 class="card-title fs-3" style="font-family: 'Playfair Display', serif;">Featured Post</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Nov 12</h6>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">Continue reading
+                    </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <div class="card-body">
+                    <strong class="d-inline-block text-primary-emphasis mb-2">Category 1</strong>
+                    <h5 class="card-title fs-3" style="font-family: 'Playfair Display', serif;">Post title</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Nov 11</h6>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">Continue reading</a>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <% for (i in locals.postList) { %>
+            
+            <% if (parseInt(postList[i].id) % 2 != 0) { %>
+                <div class="row mb-2" method="GET" id="<% postList[i].id %>">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                          <div class="card-body">
+                              <strong class="d-inline-block text-primary-emphasis mb-2">Category 1</strong>
+                              <h5 class="card-title fs-3" style="font-family: 'Playfair Display', serif;" id="title"><%= postList[i].title %></h5>
+                              <h6 class="card-subtitle mb-2 text-body-secondary">Nov 11</h6>
+                              <p class="card-text" id="text"><%= postList[i].contents %></p>
+                              <a href="/edit/<%= postList[i].id %>" class="icon-link gap-1 icon-link-hover stretched-link">Continue reading</a>
+                          </div>
+                        </div>
+                    </div>
+            <% } else { %>
+                    <div class="col-md-6" method="GET" id="<% postList[i].id %>">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <strong class="d-inline-block text-primary-emphasis mb-2">Category 1</strong>
+                                <h5 class="card-title fs-3" style="font-family: 'Playfair Display', serif;" id="title"><%= postList[i].title %></h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">Nov 11</h6>
+                                <p class="card-text" id="text"><%= postList[i].contents %></p>
+                                <a href="/edit/<%= postList[i].id %>" class="icon-link gap-1 icon-link-hover stretched-link">Continue reading</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+    

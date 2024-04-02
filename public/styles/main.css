@@ -1,0 +1,13 @@
+.active {
+    font-weight: 700;
+}
+
+.nav-item:hover {
+    font-weight: 700;
+    /* transition */
+}
+
+
+.post-title {
+    font-size: 3rem;
+}

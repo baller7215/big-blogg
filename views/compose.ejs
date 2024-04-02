@@ -1,0 +1,61 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="container my-2">
+        <form id="postForm" action="/submit" method="POST" class="needs-validation" novalidate>
+            
+            <div class="mb-3 has-validation">
+                <label for="inputTitle" class="form-label">Post Title</label>
+                <% if (locals.editPost) { %>
+                    <input type="text" class="form-control" id="inputTitle" name="inputTitle" autocomplete="off" value="<%= editPost.title %>" required>
+                <% } else { %>
+                    <input type="text" class="form-control" id="inputTitle" name="inputTitle" autocomplete="off" placeholder="Title" required>
+                <% } %>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3 has-validation">
+                <label for="postContents" class="form-label">Contents of Post</label>
+                <% if (locals.editPost) { %>
+                    <textarea type="text" class="form-control" id="postContents" name="postContents" rows="5" placeholder="type here to add context to your post"><%= editPost.contents %></textarea>
+                <% } else { %>
+                    <textarea type="text" class="form-control" id="postContents" name="postContents" rows="5"></textarea>
+                <% } %>
+            </div>
+
+            <div class="mb-3 container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <label for="postId" class="form-label">Post Id: </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" id="postId" name="postId" type="text" value="<%= postId %>" readonly>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-secondary" id="deleteBtn" type="delete">Delete Post</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" id="submitBtn" type="submit">Submit Form</button>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+            
+            <h4 class="mb-3">Please fill in both fields before submitting.</h4>
+        </form>
+    </div>
+
+    <script>
+        // to modify the post method when different buttons are clicked
+        // submit button
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            document.getElementById("postForm").action = "/submit";
+        });
+
+        // delete button
+        document.getElementById("deleteBtn").addEventListener("click", function() {
+            document.getElementById("postForm").action = "/delete";
+        });
+    </script>
+
+<%- include("partials/footer.ejs") %>
