@@ -1,6 +1,6 @@
 # big blogg
 
-a sample blog website that allows users to create and edit posts locally. made apart of full stack udemy course.
+a sample blog website with bootstrap that allows users to create and edit posts locally. made apart of full stack udemy course.
 
 made with **EJS**, **JavaScript**, **CSS**, **Node.js**, **Express.js**
 
